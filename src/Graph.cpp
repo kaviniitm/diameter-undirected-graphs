@@ -66,7 +66,7 @@ vector<set<int>> Graph::computeF(int u) {
   return F;
 }
 
-int computeMaxEccentricity(set<int> vertices) {
+int Graph::computeMaxEccentricity(set<int> vertices) {
   int maxEccentricity = 0;
   for (set<int>::iterator it=vertices.begin(); it!=vertices.end(); ++it) {
     int eccentricity = computeEccentricity(*it);
@@ -78,11 +78,20 @@ int computeMaxEccentricity(set<int> vertices) {
 }
 
 int Graph::iFUB(int u, int l, int k) {
-  int eccentricityU = computeEccentricity(u)
+  int eccentricityU = computeEccentricity(u);
   int i = eccentricityU;
   int lb = max(eccentricityU, l);
   int ub = 2*eccentricityU;
-  while (ub-lb>k) {
 
+  vector<set<int>> F = computeF(u);
+  while (ub-lb>k) {
+    int newLowerBound = max(lb, computeMaxEccentricity(F[i]));
+    if (newLowerBound > 2*(i-1)) {
+      return newLowerBound;
+    } else {
+      lb = newLowerBound;
+      ub = 2*(i-1);
+    }
+    i--;
   }
 }

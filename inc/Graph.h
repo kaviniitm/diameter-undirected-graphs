@@ -2,17 +2,23 @@
 #define GRAPH_H
 
 #include <vector>
+#include <set>
+#include <queue>
+
+using namespace std;
 
 class Graph {
-  private int numberOfVertices;
-  private int numberOfEdges;
-  private vector<vector<int>> adjList;
+  int numberOfVertices;
+  int numberOfEdges;
+  vector< vector<int> > adjList;
 
-  public Graph(int numberOfVertices);
-  private int computeEccentricity(int u);
-  private vector<set<int>> computeF(int u);
-  private int computeMaxEccentricity(set<int> vertices);
-  public int iFUB(int u, int l, int k);
-}
+  int computeEccentricity(int u);
+  vector< set<int> > computeF(int u);
+  int computeMaxEccentricity(set<int> vertices);
+
+  public:
+  Graph(int numberOfVertices);
+  int iFUB(int u, int l, int k);
+};
 
 #endif

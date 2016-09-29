@@ -12,12 +12,12 @@ int Graph::computeEccentricity(int u) {
 
   visited[u] = true;
   distanceFromU[u] = 0;
-  queue.push_back(u);
+  BFSQueue.push(u);
 
   int eccentricity = 0;
-  while (!queue.empty()) {
-    int top = queue.front();
-    queue.pop_front();
+  while (!BFSQueue.empty()) {
+    int top = BFSQueue.front();
+    BFSQueue.pop();
 
     for (vector<int>::iterator it=adjList[top].begin(); it!=adjList[top].end(); ++it) {
       if (!visited[*it]) {
@@ -26,26 +26,26 @@ int Graph::computeEccentricity(int u) {
         if (distanceFromU[*it] > eccentricity) {
           eccentricity = distanceFromU[*it];
         }
-        queue.push_back(*it);
+        BFSQueue.push(*it);
       }
     }
   }
   return eccentricity;
 }
 
-vector<set<int>> Graph::computeF(int u) {
+vector< set<int> > Graph::computeF(int u) {
   vector<int> distanceFromU(numberOfVertices);
   vector<bool> visited(numberOfVertices, false);
   queue<int> BFSQueue;
 
   visited[u] = true;
   distanceFromU[u] = 0;
-  queue.push_back(u);
+  BFSQueue.push(u);
 
   int eccentricity = 0;
-  while (!queue.empty()) {
-    int top = queue.front();
-    queue.pop_front();
+  while (!BFSQueue.empty()) {
+    int top = BFSQueue.front();
+    BFSQueue.pop();
 
     for (vector<int>::iterator it=adjList[top].begin(); it!=adjList[top].end(); ++it) {
       if (!visited[*it]) {
@@ -54,12 +54,12 @@ vector<set<int>> Graph::computeF(int u) {
         if (distanceFromU[*it] > eccentricity) {
           eccentricity = distanceFromU[*it];
         }
-        queue.push_back(*it);
+        BFSQueue.push(*it);
       }
     }
   }
 
-  vector<set<int>> F(eccentricity+1);
+  vector< set<int> > F(eccentricity+1);
   for (int i=0; i<numberOfVertices; ++i) {
     F[distanceFromU[i]].insert(i);
   }
@@ -83,7 +83,7 @@ int Graph::iFUB(int u, int l, int k) {
   int lb = max(eccentricityU, l);
   int ub = 2*eccentricityU;
 
-  vector<set<int>> F = computeF(u);
+  vector< set<int> > F = computeF(u);
   while (ub-lb>k) {
     int newLowerBound = max(lb, computeMaxEccentricity(F[i]));
     if (newLowerBound > 2*(i-1)) {

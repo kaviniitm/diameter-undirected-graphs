@@ -8,6 +8,7 @@
 using namespace std;
 
 int main(int argc, char *argv[]) {
+  ios::sync_with_stdio(false);
   if (argc != 2) {
     cout<<"Error in Command Line. ./main <datasetFileName>"<<endl;
     return 0;

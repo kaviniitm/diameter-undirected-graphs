@@ -83,6 +83,7 @@ int Graph::iFUB(int u, int l, int k) {
     }
     i--;
   }
+  return lb;
 }
 
 int Graph::getVertexWithMaximumDegree() {

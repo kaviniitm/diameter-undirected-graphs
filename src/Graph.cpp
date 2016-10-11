@@ -2,7 +2,12 @@
 
 Graph::Graph(int numberOfVertices) {
   this->numberOfVertices = numberOfVertices;
-  adjList.reserve(numberOfVertices);
+  adjList.reserve(numberOfVertices+1);
+}
+
+void Graph::addEdge(int u, int v) {
+  adjList[u].push_back(v);
+  adjList[v].push_back(u);
 }
 
 vector<int> Graph::getDistanceFromU(int u) {

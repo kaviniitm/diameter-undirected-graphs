@@ -7,7 +7,7 @@ CC := g++ # This is the main compiler
 SRCDIR := src
 BUILDDIR := build
 BINDIR := bin
-TARGET := $(BINDIR)/Graph
+TARGET := $(BINDIR)/main
  
 SRCEXT := cpp
 SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))

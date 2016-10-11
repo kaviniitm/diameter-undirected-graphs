@@ -51,5 +51,5 @@ Outputs the value of the diameter.
 
 Implemented the algorithm from the paper, <br />
 On computing the diameter of real-world undirected graphs <br />
-(Pilu Crescenzi, Roberto Grossi, Michel Habib, Leonardo Lanzi, Andrea Marino)
+(Pilu Crescenzi, Roberto Grossi, Michel Habib, Leonardo Lanzi, Andrea Marino)<br />
 http://www.sciencedirect.com/science/article/pii/S0304397512008687
